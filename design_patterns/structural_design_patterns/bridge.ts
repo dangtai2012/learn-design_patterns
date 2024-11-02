@@ -1,3 +1,4 @@
+//ts-worksheet
 interface IDatabase {
   connect(): void;
   query(sql: string): any;
@@ -11,7 +12,6 @@ class PostgreSQLDatabase implements IDatabase {
 
   query(sql: string): any {
     console.log(`Executing query '${sql}' on PostgreSQL database.`);
-    // Implementation of query execution
   }
 
   close(): void {
@@ -26,7 +26,6 @@ class MongoDBDatabase implements IDatabase {
 
   query(sql: string): any {
     console.log(`Executing query '${sql}' on MongoDB database.`);
-    // Implementation of query execution
   }
 
   close(): void {
@@ -44,6 +43,7 @@ class ClientDatabaseService extends DatabaseService {
   fetchData(query: string): any {
     this.database.connect();
     const result = this.database.query(query);
+    console.log("🚀 ~ ClientDatabaseService ~ fetchData ~ result:", result);
     this.database.close();
     return result;
   }
